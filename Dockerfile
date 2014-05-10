@@ -9,14 +9,10 @@ MAINTAINER dusty@clarkda.com
 RUN apt-get update
 
 # ..
-RUN apt-get install apache2 libapache2-mod-php5 php5-mysql -y
+RUN apt-get install supervisor apache2 libapache2-mod-php5 php5-mysql -y
 
-RUN a2enmod php5
-
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 80
 
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+CMD ["/usr/bin/supervisord"]
