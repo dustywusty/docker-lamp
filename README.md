@@ -1,4 +1,4 @@
-docker-apache2
+docker-lamp
 ==============
 
 ## Install Docker (Linode) Ubuntu 14.04
@@ -8,7 +8,7 @@ apt-get update
 apt-get install docker.io
 ~~~
 
-## Install docker-apache2
+## Install docker-lamp
 
 ##### I personally like a shorter alias
 
@@ -28,7 +28,7 @@ mkdir -p /var/docker/mysite/var/www
 ##### Build our docker image
 
 ~~~
-d build -t dusty/mysite github.com/clarkda/docker-apache2.git
+d build -t dusty/mysite github.com/clarkda/docker-lamp.git
 ~~~
 
 ##### Start a container, expose port 80, and attach our persistent directories
