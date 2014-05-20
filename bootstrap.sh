@@ -4,13 +4,11 @@ cat << EOF
 
  _   _               _                 
 (_) | |_____ _____  | |__ _ _ __  _ __ 
-| | | / _ \ V / -_) | / _\` | '  \| '_ \
+| | | / _ \ V / -_) | / _\` | '  \| '_ \\
 |_| |_\___/\_/\___| |_\__,_|_|_|_| .__/
-                                 |_|                                           
+                                |_|                                           
 
 EOF
-
-# ..
 
 # ..
 
@@ -18,14 +16,14 @@ set_env () {
 	while [ -z "${server_name}" ]; do
 	        read -p "server name : " temp_server_name
 	        if [ ! -z ${temp_server_name} ]; then
-	        	server_name=temp_server_name
+	        	server_name=${temp_server_name}
 	        fi
 	done	
 
 	while [ -z "${server_port}" ]; do
 	        read -p "server port : " temp_server_port
 	        if [ ! -z ${temp_server_port} ]; then
-	        	server_port=temp_server_port
+	        	server_port=${temp_server_port}
 	        fi
 	done	
 
@@ -34,9 +32,10 @@ set_env () {
 
 # ..
 
+
 save_env () {
 	while true; do
-	    read -p $'\n'"save and build docker image? y/n " yn $'\n'
+	    read -p "save and build docker image? y/n " yn 
 	    case $yn in
 	        [Yy]* ) create_persist_volumes; break;;
 	        [Nn]* ) exit;;
